@@ -12,6 +12,7 @@ import {
 } from '../interfaces/questionsInterface';
 import { Edit } from './Icons';
 
+//
 interface QuestionProps {
     question: Question
     index: number
