@@ -1,38 +1,113 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #D0F7FA;
+  --green: #00635B;
+  --blue: #1D4ED8;
+  --grey: #C4C4C4;
+  --light-gray: rgb(223, 223, 223);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.switch input,
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  inset: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/***** slider ******************/
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 3px;
+  height: 24px;
+  width: 46px;
+  background-color: white;
+  border-radius: 34px;
+  transition: .4s;
+  outline-color: var(--grey);
+  outline-width: 1px;
+  outline-style: solid;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--light-gray);
+  border-radius: 34px;
+  transition: .4s;
+  outline-offset: -1px;
+  outline-color: var(--grey);
+  outline-width: 1px;
+  outline-style: solid;
 }
 
-.App-link {
-  color: #61dafb;
+.switch input:checked+.slider {
+  background-color: var(--green);
+  outline-color: transparent;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.switch input:checked+.slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+  outline-color: transparent;
+  background: white;
+}
+
+
+/***** checkbox ****************/
+
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 20px;
+  cursor: pointer;
+  line-height: 12px;
+  height: 15px;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  border-radius: 3px;
+  border: 1px solid var(--grey);
+}
+
+.checkbox input:checked ~ .checkmark {
+  background-color: var(--green);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
