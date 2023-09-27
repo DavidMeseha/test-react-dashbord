@@ -1,6 +1,6 @@
 import { useState, type FC, useEffect } from 'react';
 import Checkbox from './Checkbox';
-import { Add } from './Icons';
+import { Add, List } from './Icons';
 import Input from './Input';
 import { DropdownQuestion as DropdownQuestionType, MultiChoiceQuestion, NormalQuestion as NormalQuestionType, Question, VideoQuestion as VideoQuestionType, YesOrNoQuestion as YesOrNoQuestionType } from '../interfaces/questionsInterface';
 import Dropdown from './Dropdown';
@@ -25,7 +25,7 @@ export const ChoiceQuestion: FC<{ question: MultiChoiceQuestion, setQuestion: (q
             <div>
                 <div className='mb-2 pl-6 font-bold'>Choice</div>
                 <div className='flex gap-4 w-full items-center'>
-                    <div>X</div>
+                    <div><List /></div>
                     <div className='grow'>
                         <Input type='text' placeholder='Add Choice' onChange={(event) => setChoice(event.target.value)} value={choice} />
                     </div>
@@ -68,7 +68,7 @@ export const DropdownQuestion: FC<{ question: DropdownQuestionType, setQuestion:
             <div>
                 <div className='mb-2 pl-6 font-bold'>Choice</div>
                 <div className='flex gap-4 w-full items-center'>
-                    <div>X</div>
+                    <div><List /></div>
                     <div className='grow'>
                         <Input type='text' placeholder='Add Choice' onChange={(event) => setChoice(event.target.value)} value={choice} />
                     </div>
@@ -120,7 +120,7 @@ export const NormalQuestion: FC<{ question: NormalQuestionType, setQuestion: (q:
     return (
         <div>
             <div className='mb-2 font-bold'>Question</div>
-            <Input type='text' placeholder='Enter Number of Choice' onChange={(event) => setQuestion({...question, question:event.target.value})} value={question.question} />
+            <Input type='text' placeholder='Enter Number of Choice' onChange={(event) => setQuestion({ ...question, question: event.target.value })} value={question.question} />
         </div>
     )
 }
